@@ -15,7 +15,6 @@ Angular 11
                 objects, json, inheretence, modules, asynchronosu programming (Promise, async
                 and await)
 
-
     Lab Setup
 
         VSCode      IDE
@@ -132,5 +131,80 @@ Angular 11
                 tools like babel, npm, karma, angular cli ..etc are JS based tools and these
                 tools have to run in nodejs, because we do not run them on the browser.
 
-        
-        
+
+    Archetecture
+
+        Angular offeres html extendability. That means we can create our own elements(tags) and attributes apart from 
+        thsoe that are built-in in html.
+
+        what does an angular app contain ?
+
+            Modules
+            Component Directives
+            Attribute Directives
+            Pipes
+            Services
+            Gaurds
+            Interceptors ..etc.,
+
+            1. Each resourece is an typescript class.
+            2. Each resource is amrked witha decorator is identify its job.
+            3. Each decorator is passed a json object called 'meta-data'. The meta-data has the
+                    config., of that resourece
+
+        Modules
+            
+            Angular Modules and Javascript Modules are different and we see both side-by-side in our apps.
+
+            An angular module is a unit containing components,directives,pipes,service ..etc., and sub-modules.
+
+            Each angular app is contained in a top-level module called 'ROOT MODULE'.
+
+            All other sub-modules are called 'FEATURE MODULE'.
+
+            @NgModule({
+                declarations:[],
+                imports:[],
+                exports:[],
+                providers:[],
+                bootstrap:[]
+            })
+            class AppModule{}
+
+        Component Directive
+
+            Each component directive is an html element(tag) defined through angular.
+
+            @Component({
+                selector:'tag-name',
+                templateUrl:'./app.component.html',
+                styleUrls:['./app.component.css']
+            })
+            class AppComponent{}
+
+        Attribute Directive
+
+            Each attribute directive is an html attribute defined through angular.
+
+            @Directive({
+                selector:'attribute-name'
+            })
+            class HihlightDirective {}
+
+        Pipe
+
+            A pipe is a transfor used to trnasform data just before rendering.
+
+            @Pipe({
+                name:'to-words'
+            })
+            class ChnageToWordsPipe {}
+
+        Service
+
+            A service offers bussiness logic like computations/ rest-api communication ..etc.,
+
+            @Injectable({
+                providedIn:'root'
+            })
+            class EmployeeService {}
