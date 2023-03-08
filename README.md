@@ -208,3 +208,115 @@ Angular 11
                 providedIn:'root'
             })
             class EmployeeService {}
+
+    Angular CLI
+
+        is a command line interface offering commands to execute
+        various steps or phases of our app dfevelopment.
+
+        npm install -g @angular/cli
+        ng version
+
+        ng new proj-name            creating a new angular app.
+                                        1. create a folder called proj-name.
+                                        2. it is initialized as a node project.
+                                        3. standard project strucutre is copied.
+                                        4. all needed dependencies are installed via 'npm install'.
+
+        cd proj-name
+
+            ng build                        build the app, and the target files are stroed in 'dist'.
+            ng test                         build the app, and execute the test cases
+            ng serve                        build the app, host it on a development server @ 4000 port
+            ng serve --port 8989 -o         build the app, host it on a development server @ a givne port.
+
+        ng generate module ModuleName
+        ng g module ModuleName
+        ng g component ComponentName --skip-tests
+        ng g c ComponentName --skip-tests
+        ng g directive DirectiveName --skip-tests
+        ng g service ServiceName --skip-tests
+        ng g pipe PipeName --skip-tests
+        ng g guard GuardName --skip-tests
+        ng g interceptor InterceptorName --skip-tests
+        ng g class ClassName --skip-tests
+        ng g interface InterfaceName
+
+    Angular Module
+
+        is a unit of composition having components, directives, services, pipes, guards,interceptros and other sub-modules.
+
+        each angular app has a top-level moduel called root module.
+
+            @NgModule({
+                declarations:[],            is a list of components, directives, pipes that belong to this module
+                imports:[],                 is a list of sub-modules to be used in this module
+                exports:[],                 is a list of components, directives, pipes that belong to this module and are 
+                                            allowed to be accessed in another module, this is absent for root-module
+                providers:[],               is a list of services, guards and interceptros that belong to this module.
+                bootstrap:[]                is a list of top-level components of this module. this is present only for 
+                                            root-modules
+            })
+            class SalesModule{}
+
+    Angular Components (Component Directives)
+
+        Angular offers html extendability. We can create our own html elements (tag) and attributes.
+
+        Elements created in angular are called Component Directives or Components in short.
+        Attributes created in angular are called Attribute Directives or Directives in short.
+
+        Component       =       a class     +       a tempalte      +   a style sheet
+
+        <app-dashboard></app-dashbord>
+
+                            dashboard.component.ts  +   dashboard.component.html    +   dashboard.component.css
+
+            dashboard.component.ts
+
+                @Component({
+                    selector:'app-dashboard',
+                    templateUrl:'./dashbord.component.html',
+                    styleUrls:['./dashbord.component.css']
+                })
+                class DashboardComponent{
+
+                    userName:string;
+                    shoppingCartCount:number;
+
+                    constructor(){
+                        this.userName="Somebody";
+                        this.shoppingCartCount=0;
+                    }
+
+                    //methods used to handle events.
+                }
+
+            dashboard.component.html
+
+                <section>
+                    <h3>{{userName}}</h3>
+                    <p> You have {{shoppingCartCount}} items in your shopping cart </p>
+                </section>
+
+    Data Binding
+
+        is to use the fields and method of a component class in the component template.
+
+        each field when bound is observed for changes and on changing any field its updated value
+        is reflected whereever needed in the template (the tempalte is re-rendered).
+
+        Interpolation
+
+            syntax: {{angular-expression}}
+            eg:     {{ (p*t*r)/100 }}           //provided p,t and r are the fields of that component class
+
+        Two-Way Data Binding
+        One-Way Data Binding
+            Attribute Binding
+            Event Binding
+            Style Binding
+            Css-Class Binding
+
+            
+
