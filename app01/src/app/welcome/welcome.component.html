@@ -1,3 +1,27 @@
 <section>
     <p>Hello <strong>{{userName}}</strong>! Welcome To My SPA!</p>
+
+    <div>
+        <img [src]="logos[logoIndex]" 
+            (click)="toggleLogo()" 
+            [style.width.px]="logoWidth" 
+            [class.center]="isCentered"
+            [class.border]="isBordered"
+        />
+    </div>
+
+    <form>
+        <label>UserName:
+            <input type="text" name="tb1" [(ngModel)]="userName" />
+        </label>
+        <label>Image Width: {{logoWidth}} px 
+            <input type="range" name="tb2" [(ngModel)]="logoWidth" min="100" max="500" /><
+        </label>
+        <label>
+            <input type="checkbox" name="cb1" [(ngModel)]="isCentered" /> Apply Center
+        </label>
+        <label>
+            <input type="checkbox" name="cb2" [(ngModel)]="isBordered" /> Apply Border
+        </label>
+    </form>
 </section>

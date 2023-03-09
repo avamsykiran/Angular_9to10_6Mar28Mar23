@@ -304,7 +304,7 @@ Angular 11
         is to use the fields and method of a component class in the component template.
 
         each field when bound is observed for changes and on changing any field its updated value
-        is reflected whereever needed in the template (the tempalte is re-rendered).
+        is reflected whereever needed in the template (the template is re-rendered).
 
         Interpolation
 
@@ -312,11 +312,68 @@ Angular 11
             eg:     {{ (p*t*r)/100 }}           //provided p,t and r are the fields of that component class
 
         Two-Way Data Binding
+
+            is used to bind the form-elements of the template with the field in the component class.
+
+            we use an attribute directive 'ngModel' from 'FormsModule' from '@angular/forms'.
+
+            <input type="text" name="tb1" [(ngModel)]="field" />
+
         One-Way Data Binding
             Attribute Binding
+
+                we bind a field with an attribute, means the attribute value is controlled by the field.
+
+                <table border="1"></table>
+                <table [border]="myField"></table>
+
             Event Binding
+
+                is to bind a method to an event attribute, so that the boudn mehtod gets invoekd 
+                on that event.
+
+                <element (eventDirective)="method()"></element>
+
+                eventDirectives are angular defiend attributes representing event.
+
+                    html event attribute            event directive
+                        onSubmit                        ngSubmit
+                        onClick                         click
+                        onDblClick                      dblclick
+                        onmouseover                     mouseover
+                        onchange                        change
+                            ...etc.,
+                
             Style Binding
+
+                is used to bind a field to a css-property.
+
+                <p [style.backgroundColor]="bgc"></p>   //where bgc is a field.
+
             Css-Class Binding
 
-            
+                is used to attach/detach a css class to an element.
 
+                <element [class.className]="booleanField"></element>
+            
+    Pipe
+
+        is a angular resource that is used to tranform the data just before it is rendered.
+
+        in-built
+
+            lowercase           uppercase           titlecase
+            number              currency            percent
+            json                async               date
+
+        custom
+
+            @Pipe({
+                name:'toWords'
+            })
+            class ChnageToWordsPipe implements PipeTransform {
+                transform(value:any) : any {
+                    //....
+                    return theTransformedValue;
+                }
+            }
