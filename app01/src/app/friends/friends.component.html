@@ -1,0 +1,17 @@
+<section>
+    <h4>My Friends</h4>
+    
+    <form (ngSubmit)="add()">
+        <label>Friend Name: <input type="text" name="fnm" [(ngModel)]="friendName" /></label>
+        <button>ADD</button>
+    </form>
+
+    <p *ngIf="friends.length===0"><strong>No friends Found! Try adding one!</strong></p>
+
+    <ol *ngIf="friends.length!=0">
+        <li *ngFor="let f of friends; index as i">
+            <button type="button" (click)="remove(i)">X</button>
+            {{f}} 
+        </li>
+    </ol>
+</section>

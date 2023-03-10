@@ -377,3 +377,26 @@ Angular 11
                     return theTransformedValue;
                 }
             }
+
+    Directives / Attribute Directives
+
+        built-in Attribute Directives
+
+                ngModel from FormsModule
+                formControlName from ReactiveFormsModule
+                routerLink  from RouterModule
+                    ...etc.,
+
+        Event Attribute Directives
+
+                click,dblclick,mouseover,mouseleave,keyup,keydown,ngSubmit,change,focus,blur ..etc.,
+
+        Structral Directives
+
+                *ngIf
+                *ngFor
+                )
+        Custom Attribute Directives
+
+
+        

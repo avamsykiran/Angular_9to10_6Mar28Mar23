@@ -16,4 +16,27 @@
         <div>{{dateData|date:'dd-MM-yy hh:mm:ss aa'}}</div>
         <div>{{dateData|date:'dd-MM-yy HH:mm:ss'}}</div>
     </div>
+
+    <h4>Number Related Pipe (original: "{{numData}}")</h4>
+    <div>
+        <div>{{numData|number:'4.0-0'}}</div>
+        <div>{{numData|number:'2.2-4'}}</div>
+        <div>{{numData|percent}}</div>
+        <div>{{numData|currency:'INR'}}</div>
+        <div>{{numData|currency:'USD'}}</div>
+        <div>{{numData|currency:'GBP'}}</div>
+        <div>{{numData|currency:'JPN'}}</div>
+        <div>{{numData|currency:'AUD'}}</div>
+        <div>{{numData|currency:'XYZ'}}</div>
+    </div>
+
+    <h4>Custom Pipe</h4>
+    <div>
+        <div>{{"Goa"|capital}}</div>
+        <div>{{"Bihar"|capital}}</div>
+        <div>{{"Punjab"|capital}}</div>
+        <div>{{123|intoWords}}</div>
+        <div>{{1204|intoWords}}</div>
+        <div>{{8900|intoWords}}</div>
+    </div>
 </section>
