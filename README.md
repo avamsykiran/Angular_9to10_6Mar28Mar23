@@ -398,5 +398,37 @@ Angular 11
                 )
         Custom Attribute Directives
 
+            @Directive({
+                selector:'[attribute-name]'
+            })
+            class HihlightDirective {}
 
-        
+    Integrating Bootstrap
+
+        npm i bootstrap --save
+
+        node_modules/bootstrap/dist/css/bootstrap.min.css
+        node_modules/bootstrap/dist/js/bootstrap.min.js
+
+        include these file in the 'styles' and 'scripts' section of angular.json file 
+
+    Service
+
+        is used to hold the application logic, like computtion or a rest-api communication ..etc.,
+
+        Angular Services are injectables via angular dependency injection.
+
+        A service object can be injected into a component or a directive or a pipe or even into
+        another service.
+
+        The service is injected through the constructor of a resource that needs it.
+
+        The service objects are maintained by 'angular providers'.
+
+        Each resource has access to its own provider and the provider of its module and
+        the provider of the root-module.
+
+        by default each service is marked as "providedIn:'root'" me3aning tha service is
+        managed by root-module. To alter this behavior we will maek "providedIn:'any'" and
+        include the service in the 'providers:[]" list of each resource meta-data.
+

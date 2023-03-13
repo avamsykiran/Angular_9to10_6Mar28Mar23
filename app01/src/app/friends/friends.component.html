@@ -6,7 +6,7 @@
         <button>ADD</button>
     </form>
 
-    <p *ngIf="friends.length===0"><strong>No friends Found! Try adding one!</strong></p>
+    <p *ngIf="friends.length===0"><strong>No friends found! Try adding one!</strong></p>
 
     <ol *ngIf="friends.length!=0">
         <li *ngFor="let f of friends; index as i">
