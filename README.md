@@ -432,3 +432,47 @@ Angular 11
         managed by root-module. To alter this behavior we will maek "providedIn:'any'" and
         include the service in the 'providers:[]" list of each resource meta-data.
 
+    Inter Component Communication - Hirarchial Component Design.
+
+        Attributes are used to pass data from parent ot child component.
+        To put an attribute in a child component, the child component field is to be
+        marked with '@Input()' decorator.
+
+        Custom Events, are events that can be emitted by a component so that
+        its parent component can handle it. 
+            1. EventEmitter<dataType> is used to declare our own events.
+            2. To fire an event EventEmitter has 'emit()' method.
+            3. Each EventEmitter must be marked with '@Output()' so that the parent can handle.
+
+    Angular Forms
+
+        Template Driven Forms
+
+            FormsModule from '@angular/forms'
+                ngModel
+                ngForm
+
+            the form is developed in html, the form validations are also
+            controlled by html and only data from the form is bound to a few fields.
+
+            such are simple to write and difficult to control and test, as it has
+            more html and less javascript.
+
+            these forms are used mostly in a simpler context like a senario having
+            not more than two fields.
+
+        Model Driven Forms / Reactive Forms
+
+            ReactiveFormsModule from '@angular/forms'
+                formControlName
+                formGroup
+
+                FormGroup
+                FormControl
+
+            The form strucutre is designed in the javascript and that is called form model.
+            The form model controls the validations as well.
+            this model is bound to the html resulting lesser html and more javascript.
+
+            thus thee forms are controllable and testable and offer comlicatiod
+            senarios like nested forms.

@@ -9,9 +9,18 @@ import { StockService } from '../services/stock.service';
 })
 export class StockComponent {
 
-  items:Item[];
+  items!:Item[];
 
   constructor(private stockService:StockService){
+    this.loadData();
+  }
+
+  loadData(){
     this.items=this.stockService.getAll();
+  }
+
+  remove(id:number){
+    this.stockService.deleteById(id);
+    this.loadData();
   }
 }
