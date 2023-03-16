@@ -23,4 +23,24 @@ export class StockComponent {
     this.stockService.deleteById(id);
     this.loadData();
   }
+
+  add(item:Item){
+    this.stockService.add(item);
+    this.loadData();
+  }
+
+  markEditable(id:number){
+    let index = this.items.findIndex(i => i.id===id);
+    this.items[index].isEditable=true;
+  }
+  
+  unMarkEditable(id:number){
+    let index = this.items.findIndex(i => i.id===id);
+    this.items[index].isEditable=undefined;
+  }
+
+  update(item:Item){
+    this.stockService.update(item);
+    this.loadData();
+  }
 }

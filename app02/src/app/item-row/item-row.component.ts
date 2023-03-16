@@ -13,12 +13,20 @@ export class ItemRowComponent {
 
   @Output()
   delBtnClick:EventEmitter<number>;
+  
+  @Output()
+  editBtnClick:EventEmitter<number>;
 
   constructor(){
     this.delBtnClick=new EventEmitter<number>();
+    this.editBtnClick=new EventEmitter<number>();
   }
 
   fireDelBtnClick(){
     this.delBtnClick.emit(this.item.id);
+  }
+
+  fireEditBtnClick(){
+    this.editBtnClick.emit(this.item.id);
   }
 }

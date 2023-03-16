@@ -1,5 +1,5 @@
-import { Component,EventEmitter,Output } from '@angular/core';
-import {FormGroup,FormControl,Validators} from '@angular/forms';
+import { Component, EventEmitter, Output, Input, OnChanges } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Item } from '../models/item';
 
 @Component({
@@ -7,28 +7,47 @@ import { Item } from '../models/item';
   templateUrl: './item-form.component.html',
   styleUrls: ['./item-form.component.css']
 })
-export class ItemFormComponent {
+export class ItemFormComponent implements OnChanges {
 
-  itemForm:FormGroup;
+  @Input()
+  item!: Item;
 
-  nameFC:FormControl;
-  quantityFC:FormControl;
-  unitFC:FormControl;
+  itemForm: FormGroup;
+
+  nameFC: FormControl;
+  quantityFC: FormControl;
+  unitFC: FormControl;
 
   @Output()
-  itemFormSubmited:EventEmitter<Item>;
+  itemFormSubmited: EventEmitter<Item>;
 
-  constructor(){
+  @Output()
+  cancelEdit: EventEmitter<number>;
 
-    this.nameFC=new FormControl('',[Validators.required,Validators.minLength(3),Validators.maxLength(15)]);
-    this.quantityFC=new FormControl(0,[Validators.required,Validators.min(1)]);
-    this.unitFC=new FormControl('',[Validators.required]);
+  constructor() {
+    this.nameFC = new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+    this.quantityFC = new FormControl(0, [Validators.required, Validators.min(1)]);
+    this.unitFC = new FormControl('', [Validators.required]);
 
-    this.itemForm=new FormGroup({name:this.nameFC,quantity:this.quantityFC,unit:this.unitFC});
-    this.itemFormSubmited=new EventEmitter<Item>;
+    this.itemForm = new FormGroup({ name: this.nameFC, quantity: this.quantityFC, unit: this.unitFC });
+    this.itemFormSubmited = new EventEmitter<Item>;
+    this.cancelEdit = new EventEmitter<number>();
   }
 
-  fireFormSubmit(){
-    this.itemFormSubmited.emit({id:0,...this.itemForm.value});
+  ngOnChanges() {
+    if (this.item) {
+      this.itemForm.reset(this.item);
+    }
+  }
+
+  fireFormSubmit() {
+    this.itemFormSubmited.emit({ id: this.item ? this.item.id : 0, ...this.itemForm.value,isEditable:undefined });
+    if(!this.item) {
+      this.itemForm.reset({ name: '', quantity: 0, unit: '' });
+    }
+  }
+
+  fireCancelEdit(){
+    this.cancelEdit.emit(this.item.id);
   }
 }

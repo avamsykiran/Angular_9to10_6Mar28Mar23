@@ -9,11 +9,22 @@
         <div class="col-2"></div>
     </div>
 
-    <app-item-form></app-item-form>
+    <app-item-form (itemFormSubmited)="add($event)"></app-item-form>
 
     <p class="alert alert-info p-2 " *ngIf="items.length===0"> No Items In Stock </p>
 
     <ng-container *ngIf="items.length>0">
-        <app-item-row *ngFor="let i of items" [item]="i" (delBtnClick)="remove($event)" ></app-item-row>
+        <ng-container *ngFor="let i of items">
+            <app-item-row 
+                *ngIf="!i.isEditable" 
+                [item]="i" 
+                (delBtnClick)="remove($event)" 
+                (editBtnClick)="markEditable($event)"></app-item-row>
+            <app-item-form 
+                *ngIf="i.isEditable" 
+                [item]="i" 
+                (itemFormSubmited)="update($event)"
+                (cancelEdit)="unMarkEditable($event)"></app-item-form>
+        </ng-container>
     </ng-container>
 </section>

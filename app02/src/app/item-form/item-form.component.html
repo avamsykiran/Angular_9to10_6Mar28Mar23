@@ -1,5 +1,6 @@
 <form [formGroup]="itemForm" (ngSubmit)="fireFormSubmit()">
-    <div class="alert alert-danger p-1" *ngIf="itemForm.invalid">
+    <div class="alert alert-danger p-1" 
+        *ngIf="itemForm.invalid && (nameFC.touched || quantityFC.touched || unitFC.touched || nameFC.dirty || quantityFC.dirty || unitFC.dirty)">
         <ul *ngIf="nameFC.invalid">
             <li *ngIf="nameFC.errors!['required']">Item Name is a mandate field</li>
             <li *ngIf="nameFC.errors!['minlength']">Item Name is expected to be atleast 3 letters in length</li>
@@ -15,7 +16,7 @@
     </div>
     <div class="row border-bottom border-primary p-1">
         <div class="col-1 text-end">
-            0
+            {{item?item.id:0}}
         </div>
         <div class="col">
             <input type="text" class="form-control" formControlName="name" />
@@ -27,7 +28,8 @@
             <input type="text" class="form-control" formControlName="unit"/>
         </div>
         <div class="col-2">
-            <button class="btn btn-sm btn-primary me-1" [disabled]="itemForm.invalid">ADD</button>
+            <button class="btn btn-sm btn-primary me-1" [disabled]="itemForm.invalid"> {{item?"SAVE":"ADD"}}</button>
+            <button class="btn btn-sm btn-danger" type="button" (click)="fireCancelEdit()" *ngIf="item"> CANCEL </button>
         </div>
     </div>
 </form>
