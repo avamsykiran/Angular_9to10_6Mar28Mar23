@@ -476,3 +476,61 @@ Angular 11
 
             thus thee forms are controllable and testable and offer comlicatiod
             senarios like nested forms.
+
+    Assignment # 1
+
+        Develop an SPA in angular to perform CRUD operations
+        on 'Employee' model. Employee can have (id,name,basic,mailId) as fields.
+        This app msut be in hirarichial component design.
+
+    Routing
+
+        enables us to provide client side navigation across the components.
+
+        RouterModule    from    '@angular/router'
+
+            Route               {path:'',component:Component1,pathMatch:'full|startsWith',redirect:'',
+                                        children:[],canActive:[],canDeactive:[],canLoad:[]}
+
+            Routes              Route[]
+
+            forRoot()           is method sued to load Routes into RouterModule.
+
+            router-outlet       is a component that reserve space in the top-level component, and is
+                                repalced by the component that the router moduels picks for the givne path.
+
+            routerLink          is a attribute directive used isntead of 'href' attribute of 'a' tag.
+
+            routeLinkActive     is an attribute directive that takes a css-class and applies it when that 'a'
+                                is visited.
+
+            ActivedRoute        is a service used to extract info like url, path variables, 
+                                query string etc., from the current path.
+
+            Router              is a service offer the 'navigate' and 'navigateByUrl' methods to navigate programatically.
+
+    RxJS (Reactive JavaScript)
+
+        'rxjs' is an independent library gets installed in every angular application.
+        rxjs offer reactive programming in javascript.
+
+        rxjs offers a class called Observable.
+
+        const bgJob = (observer:Observer) => {
+            
+            observer.next(val); //is used to emit an intermidiate value while the bgJob is in progress.
+            observer.complete();    //is used to indicate that the assigned job is done successfully.
+            observer.error(err);    //is used to indicate that the assigned job aborted due to an error.
+
+        };
+
+        let ob = new Observable(bgJob);
+
+        ob.subscribe({
+            next: val => { /*consuem the value emited by observer.next*/ },
+            complete: () => { /*do soemthing once the job is done */},
+            error: err => { /* handle the error emited by observer.error */ }
+        });
+
+
+
