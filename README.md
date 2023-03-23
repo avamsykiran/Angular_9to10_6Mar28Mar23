@@ -533,5 +533,27 @@ Angular 11
         });
 
      
+    Integrate rest-api calls into angular application using 'HttpClient'
 
+        @angular/commons/http
+            HttpClientModule
+                HttpClient
+                    get(url) : Observable
+                    post(url,reqBody) : Observable
+                    put(url,reqBody) : Observable
+                    delete(url) : Observable
+
+    json-server to generate fake rest api
+
+        md rest-api
+        cd rest-api
+        npm init -y
+        npm i json-server --save
+
+        rest-api
+            |- node_modules
+            |- data.json            //the hypothetical data
+            |- package.json         "start":"json-server --port 9999 --watch ./data.json"
+
+        
 
